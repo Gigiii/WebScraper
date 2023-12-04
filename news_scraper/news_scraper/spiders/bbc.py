@@ -4,11 +4,11 @@ from scrapy.crawler import CrawlerProcess
 class BbcSpider(scrapy.Spider):
     name = "bbc"
     allowed_domains = ["www.bbc.com"]
-    start_urls = ["https://www.bbc.com"]
+    start_urls = ["https://www.bbc.com/news"]
 
     def parse(self, response):
         print("[MY RESPONSE]")
-        titles = response.css('a.media__link::text').extract()
+        titles = response.css('h3.gs-c-promo-heading__title::text').extract()
         print(titles)
 
 
