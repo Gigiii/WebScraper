@@ -1,5 +1,8 @@
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 from sqlalchemy import Column, Integer, String
-from db_manager import Base
+from database.db_manager import Base
 
 #Model for keywords table
 class Keywords(Base):

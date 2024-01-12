@@ -6,7 +6,7 @@ from collections import Counter
 
 #Delete the quotation marks in a text
 def replaceQuotationMarks(text):
-    return text.replace("'", "").replace("’", "")
+    return text.replace("'", "").replace("’", "").replace("‘", "").replace("–", "").replace("``", "")
 
 #Count the keywords in a list and convert the series into a pandas dataframe including keyword and count
 def countKeywords(keyword_list):

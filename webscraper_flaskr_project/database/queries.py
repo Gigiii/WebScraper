@@ -1,4 +1,5 @@
 from models.keywords import Keywords
+from sqlalchemy import desc
 from sqlalchemy.sql import text
 from db_manager import session, Base, engine
 
@@ -20,10 +21,11 @@ def purgeKeywords():
     session.commit()
 
 def viewKeywords():
-    keywords = session.query(Keywords).all()
+    keywords = session.query(Keywords).order_by(desc(Keywords.count)).limit(10).all()
+
     for keyword in keywords:
         print(keyword.keyword, keyword.count)
 
 
 viewKeywords()
-# purgeKeywords()
+purgeKeywords()
