@@ -12,9 +12,12 @@ BOT_NAME = "news_scraper"
 SPIDER_MODULES = ["news_scraper.spiders"]
 NEWSPIDER_MODULE = "news_scraper.spiders"
 
+ITEM_PIPELINES = {
+    'news_scraper.pipelines.NewsScraperPipeline': 300,
+}
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "news_scraper (+http://www.yourdomain.com)"
+USER_AGENT = "keywordFinder"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
