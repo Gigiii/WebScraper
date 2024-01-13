@@ -4,6 +4,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 from news_scraper.keyword_filter import processKeywords
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from database.db_manager import session, engine
 import pandas as pd
 #Python Debugger
 import pdb
@@ -14,14 +15,6 @@ class NewsScraperPipeline:
     def process_item(self, item, spider):
         #process item into keywords and return a dataframe
         new_keywords = processKeywords(item['titles'])
-        print(new_keywords)
-        #Create the database and the engine
-        db_url = 'sqlite:///WebScraper.db'
-        engine = create_engine(db_url, echo=True)
-
-        # Create a session
-        Session = sessionmaker(bind=engine)
-        session = Session()
 
         existing_keywords = pd.read_sql_table('keywords', engine)
 
