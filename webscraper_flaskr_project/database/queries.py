@@ -17,7 +17,7 @@ def purgeKeywords():
 
 def viewKeywords():
 
-    keywords = session.query(Keywords).order_by(desc(Keywords.count)).limit(10).all()
+    keywords = session.query(Keywords).order_by(desc(Keywords.count)).limit(15).all()
     return keywords
 
 def insertCountries():
