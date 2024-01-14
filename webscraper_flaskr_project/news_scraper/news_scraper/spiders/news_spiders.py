@@ -3,8 +3,12 @@ import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 import scrapy
 
+#Item Class for sending our items through the filter pipeline
 class NewsScraperItem(scrapy.Item):
     titles = scrapy.Field()
+
+#Setting up all the spiders to run through scrapy
+#The Spider will parse the websites for headlines, and then send them to our filter pipeline
 
 class AmericanNewsSpider(scrapy.Spider):
     name = "American_news"
@@ -24,7 +28,7 @@ class AmericanNewsSpider(scrapy.Spider):
         yield item
 
 class UkNewsSpider(scrapy.Spider):
-    name = "Uk_news"
+    name = "Britain_news"
     url_parsing_pairs = {
                          "https://www.bbc.com/news": "h3::text",
                          "https://www.theguardian.com/europe": "h3>span::text",
@@ -41,7 +45,7 @@ class UkNewsSpider(scrapy.Spider):
         yield item
 
 class GermanNewsSpider(scrapy.Spider):
-    name = "German_news"
+    name = "Germany_news"
     url_parsing_pairs = {
                          "https://www.dw.com/en/top-stories/s-9097": "h3>a>span::text, h4>a>span::text",
                          "https://www.spiegel.de/international/germany/": "span.align-middle::text",

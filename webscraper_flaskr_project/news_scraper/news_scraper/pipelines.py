@@ -16,12 +16,11 @@ class NewsScraperPipeline:
         #process item into keywords and return a dataframe
         new_keywords = processKeywords(item['titles'])
 
+        #read existing keywords and merge them with the new ones to increase the count
         existing_keywords = pd.read_sql_table('keywords', engine)
-
         merged_keywords = pd.merge(existing_keywords, new_keywords,on='keyword', how='outer')
-        print(merged_keywords)
         merged_keywords['count'] = (merged_keywords['count_x'].fillna(0) + merged_keywords['count_y'].fillna(0)).astype('int')
-        print(type(merged_keywords['count'][0]))
+
         # Drop unnecessary columns
         merged_keywords = merged_keywords.drop(['count_x', 'count_y'], axis=1)
 

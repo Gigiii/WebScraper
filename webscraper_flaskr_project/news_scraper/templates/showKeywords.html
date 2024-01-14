@@ -32,6 +32,11 @@
 </div>
 
 {% if keywords is not none %} 
+  {% if request.args.get('country') is not none %}
+    <div class="row" style="text-align: center;">
+      <h1>{{ request.args.get('country') }}</h1>
+    </div>
+  {% endif%}
 <div class="row justify-content-center">
   <div class="col-md-4 col-md-offset-4">
     <table class="table table-striped table-hover table-bordered">

@@ -18,6 +18,7 @@ Base.query = session.query_property()
 
 #Model for countries table
 class Countries(Base):
+
     __tablename__ = 'countries'
     #country name will be the primary key of the table
     name = Column(String, primary_key=True)
@@ -30,6 +31,7 @@ class Countries(Base):
 
 #Model for keywords table
 class Keywords(Base):
+
     __tablename__ = 'keywords'
     #Keyword will be the primary key of the table
     keyword = Column(String, primary_key=True)
