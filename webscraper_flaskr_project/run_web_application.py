@@ -1,6 +1,11 @@
 from news_scraper.main import create_app
 import webbrowser
 from threading import Timer
+import nltk
+
+#Download nltk data for keyword filter
+nltk.download('stopwords')
+nltk.download('punkt')
 
 #Opens the localhost in a webbrowser
 def open_browser():
