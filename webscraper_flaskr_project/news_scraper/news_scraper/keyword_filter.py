@@ -17,7 +17,7 @@ def replaceQuotationMarks(dataframe):
     print(dataframe)
     return dataframe
 
-#Count the keywords in a list and convert the series into a pandas dataframe including keyword and count
+#Count the keywords in the list, convert the list to a counter series and convert the series into a pandas dataframe including keyword and count
 def countKeywords(keyword_list):
 
     word_counts = Counter(keyword_list)
@@ -26,7 +26,7 @@ def countKeywords(keyword_list):
     return sorted_word_counts
 
 
-#Filter the list of titles for keywords and return them in a list
+#Filter the list of titles into keywords and return them in a list
 def filterKeywords(title_list):
 
     #Convert the list into a series to work in pandas

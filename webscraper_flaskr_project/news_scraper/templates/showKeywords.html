@@ -9,7 +9,7 @@
   <h1 style="text-align: center;margin-bottom: 20px;font-weight:bold">Keyword Scraper for Countries</h1>
 <div class="row">
   <div class="col-md-4 col-md-offset-4">
-    <form action="{{ url_for('get_keywords') }}" method=post class="get-keywords text-center">
+    <form action="{{ url_for('getKeywords') }}" method=post class="get-keywords text-center">
       <div class="row">
         <div class="col-md-1"></div>
         <div class="col-md-5" style="padding-right: 0px">
@@ -48,11 +48,11 @@
         </tr>
       </thead>
       <tbody>
-        {% for keyword in keywords %}
+        {% for keyword_pair in keywords %}
         <tr>
           <th scope="row">{{ loop.index }}</th>
-          <td style="font-size: large;">{{ keyword.keyword }}</td>
-          <td style="font-size: large;">{{ keyword.count }}</td>
+          <td style="font-size: large;">{{ keyword_pair.keyword }}</td>
+          <td style="font-size: large;">{{ keyword_pair.count }}</td>
         </tr>
         {% endfor %}
       </tbody>

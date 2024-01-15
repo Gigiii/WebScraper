@@ -2,17 +2,22 @@ import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 from news_scraper.keyword_filter import processKeywords
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from database.db_manager import session, engine
 import pandas as pd
-#Python Debugger
-import pdb
-#download ipython
+from sqlalchemy import create_engine, MetaData
+from sqlalchemy.orm import sessionmaker
 
+#Create the engine and session to communicate with SQLite database through SQLAlchemy
+engine = create_engine('sqlite:///WebScraper.db')
+Session = sessionmaker(bind=engine)
+metadata = MetaData()
+session = Session()
+
+#Processes the titles item sent from the spiders in news_spiders
 class NewsScraperPipeline:
 
     def process_item(self, item, spider):
+
+
         #process item into keywords and return a dataframe
         new_keywords = processKeywords(item['titles'])
 

@@ -1,0 +1,1 @@
+from news_scraper.spiders import news_spiders

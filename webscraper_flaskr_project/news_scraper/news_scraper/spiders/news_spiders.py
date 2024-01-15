@@ -11,6 +11,7 @@ class NewsScraperItem(scrapy.Item):
 #The Spider will parse the websites for headlines, and then send them to our filter pipeline
 
 class AmericanNewsSpider(scrapy.Spider):
+    #Declare the name of the spider and the urls to parse
     name = "American_news"
     url_parsing_pairs = {
                          "https://www.washingtonpost.com/": "h2>a>span::text",
@@ -21,6 +22,7 @@ class AmericanNewsSpider(scrapy.Spider):
                     }
     start_urls = list(url_parsing_pairs.keys())
 
+    #Extract titles from urls, create title item and send it to the pipeline
     def parse(self, response):
         titles = response.css(AmericanNewsSpider.url_parsing_pairs[response.url]).extract()
         item = NewsScraperItem()
