@@ -7,11 +7,11 @@ from .generate_report import *
 
 app_pages = Blueprint('app_pages', __name__, template_folder='templates')
 
-# Main route responsible for rendering the showKeywords template
+# Main route responsible for rendering the show_keywords template
 # alongside countries and keywords from the database
 @app_pages.route('/')
 def viewCountryKeywords():
-    return render_template('showKeywords.html', countries=viewCountries(db),
+    return render_template('show_keywords.html', countries=viewCountries(db),
                            country=request.args.get('country'), keywords=viewKeywords(db))
 
 # Runs when the user selects a country to scrape from the main route.
